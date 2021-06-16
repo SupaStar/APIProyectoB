@@ -5,7 +5,7 @@ require("JWT/config.php");
 ini_set("display_errors", 1);
 date_default_timezone_set('America/Mexico_City');
 $data = json_decode(file_get_contents('php://input'), true);
-
+echo getcwd();
 if (!isset($data)) {
     $data = $_POST;
 }
