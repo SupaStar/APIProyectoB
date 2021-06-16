@@ -1,12 +1,15 @@
 <?php
 require_once('DB.php');
 require("Modelos/usuario.php");
+require("JWT/config.php");
+
 date_default_timezone_set('America/Mexico_City');
 $data = json_decode(file_get_contents('php://input'), true);
+
 if (!isset($data)) {
     $data = $_POST;
 }
-$usuario = $data['username'];
+$username = $data['username'];
 $password = $data['password'];
 $mail = $data['mail'];
 $db = new BaseDatos();
@@ -16,13 +19,23 @@ $select->bind_param("ss", $usuario, $mail);
 $select->execute();
 $result = $select->get_result();
 $usuario = $result->fetch_object(Usuario::class);
+
 if (isset($usuario)) {
     echo json_encode(["estado" => false, "detalle" => "Usuario o correo repetido"]);
 } else {
+    $JWT = new Auth();
     $insert = $db->prepare("Insert into usuario values(null,?,?,?,?,?)");
     $password = password_hash($password, PASSWORD_DEFAULT);
     $momento = date('c');
-    $insert->bind_param("sssss", $usuario, $mail, $password, $momento, $momento);
+    $insert->bind_param("sssss", $username, $mail, $password, $momento, $momento);
+
     $insert->execute();
-    echo json_encode(["estado" => true]);
+
+    $select = $db->prepare("Select * from usuario where `username`=? OR email=?");
+    $select->bind_param("ss", $username, $mail);
+    $select->execute();
+    $result = $select->get_result();
+    $usuario = $result->fetch_object(Usuario::class);
+    $token = $JWT->Generar($usuario);
+    echo json_encode(["estado" => true, "detalle" => $token]);
 }
