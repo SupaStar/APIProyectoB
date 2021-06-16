@@ -2,7 +2,6 @@
 require('Modelos/DB.php');
 require("Modelos/usuario.php");
 require("JWT/config.php");
-ini_set("display_errors", 1);
 date_default_timezone_set('America/Mexico_City');
 $data = json_decode(file_get_contents('php://input'), true);
 if (!isset($data)) {
