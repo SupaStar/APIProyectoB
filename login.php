@@ -4,7 +4,6 @@ require("Modelos/usuario.php");
 require("JWT/config.php");
 date_default_timezone_set('America/Mexico_City');
 $data = json_decode(file_get_contents('php://input'), true);
-echo getcwd();
 if (!isset($data)) {
     $data = $_POST;
 }
@@ -13,6 +12,7 @@ $password = $data['password'];
 $mail = $data['mail'];
 $db = new BaseDatos();
 $db = $db->conectar();
+echo json_encode($db);
 $select = $db->prepare("Select * from usuario where `username`=? OR email=?");
 $select->bind_param("ss", $usuario, $mail);
 $select->execute();
