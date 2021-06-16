@@ -1,5 +1,5 @@
 <?php
-require_once('DB.php');
+require_once('Modelos/DB.php');
 require("Modelos/usuario.php");
 require("JWT/config.php");
 
