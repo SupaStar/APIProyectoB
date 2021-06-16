@@ -4,7 +4,7 @@ require("Modelos/usuario.php");
 require("JWT/config.php");
 date_default_timezone_set('America/Mexico_City');
 $data = json_decode(file_get_contents('php://input'), true);
-
+echo getcwd();
 if (!isset($data)) {
     $data = $_POST;
 }
