@@ -2,12 +2,12 @@
 
 namespace Controllers;
 require('JWT/config.php');
+require('JWT/Middleware.php');
 
 use JwtAuth;
 use Models\Usuario;
 use Rakit\Validation\Validator;
-
-date_default_timezone_set('America/Mexico_City');
+use Middleware\MiddlewareJwt;
 
 class UsuarioController
 {
@@ -62,6 +62,11 @@ class UsuarioController
 
     public static function login()
     {
+//        $middleware = new MiddlewareJwt();
+//        $token = $middleware->getBearerToken();
+//        $JWT = new JwtAuth();
+//        $a = json_decode($JWT->Validar($token));
+//        echo json_encode($a->detalle);
         $data = json_decode(file_get_contents('php://input'), true);
         if (!isset($data)) {
             $data = $_POST;
