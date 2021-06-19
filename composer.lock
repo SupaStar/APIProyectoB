@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb1c8bc04481fc1cd571362769400b06",
+    "content-hash": "d6a6df1cd92628b9bb8fb492f39ce686",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -161,6 +161,64 @@
                 }
             ],
             "time": "2021-04-16T17:34:40+00:00"
+        },
+        {
+            "name": "ecoal95/php-router",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/emilio/php-router.git",
+                "reference": "55ae2f3a6417a2327715402edb7b404001c5a04f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/emilio/php-router/zipball/55ae2f3a6417a2327715402edb7b404001c5a04f",
+                "reference": "55ae2f3a6417a2327715402edb7b404001c5a04f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "ext-xdebug": "*",
+                "phpdocumentor/phpdocumentor": "2.8.*",
+                "phpunit/phpunit": "4.8.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Router": "src"
+                },
+                "files": [
+                    "src/php-5.3-support.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emilio Cobos Álvarez",
+                    "email": "emiliocobos@usal.es",
+                    "homepage": "http://emiliocobos.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Minimal routing library",
+            "homepage": "https://github.com/ecoal95/php-router",
+            "keywords": [
+                "route",
+                "router",
+                "routing"
+            ],
+            "support": {
+                "issues": "https://github.com/emilio/php-router/issues",
+                "source": "https://github.com/emilio/php-router/tree/v1.0.3"
+            },
+            "time": "2015-08-23T22:20:07+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -2979,7 +3037,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ecoal95/php-router": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

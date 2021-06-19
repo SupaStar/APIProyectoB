@@ -1,8 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
-
 use Firebase\JWT\JWT;
-class Auth
+class JwtAuth
 {
     private static $secret_key = 'cjesunpapucho@';
     private static $encrypt = ['HS256'];
