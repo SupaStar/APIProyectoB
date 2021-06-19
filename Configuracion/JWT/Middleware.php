@@ -1,6 +1,10 @@
 <?php
 
 namespace Middleware;
+require('Configuracion/JWT/config.php');
+
+use JwtAuth;
+
 class MiddlewareJwt
 {
     function getAuthorizationHeader()
@@ -25,9 +29,11 @@ class MiddlewareJwt
         $headers = $this->getAuthorizationHeader();
         if (!empty($headers)) {
             if (preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
-                return $matches[1];
+                $JWT = new JwtAuth();
+                $response = $JWT->Validar($matches[1]);
+                return $response;
             }
         }
-        return null;
+        return json_encode(["estado"=>false,"detalle"=>["Sesion invalida"]]);
     }
 }
