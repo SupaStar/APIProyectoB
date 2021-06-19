@@ -13,8 +13,12 @@ if (!isset($data)) {
 
 $router = new Router\Router('/api');
 
-$router->post('/nuevoUsuario', [UsuarioController::class, 'crearUsuario']);
-$router->post('/login', [UsuarioController::class, 'login']);
+$router->post('/nuevoUsuario', function () use ($data) {
+    call_user_func([UsuarioController::class, 'crearUsuario'], $data);
+});
+$router->post('/login', function () use ($data) {
+    call_user_func([UsuarioController::class, 'login'], $data);
+});
 
 $router->post('/nuevaApi', function () use ($data) {
     $middleware = new MiddlewareJwt();
