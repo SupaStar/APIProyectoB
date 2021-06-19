@@ -82,8 +82,6 @@ class UsuarioController
             echo json_encode(["estado" => true, "detalle" => $token]);
             return;
         }
-        $JWT = new JwtAuth();
-        $token = $JWT->Generar($usuario);
         echo json_encode(["estado" => false, "detalle" => ["Correo o password incorrectos"]]);
         return;
     }
