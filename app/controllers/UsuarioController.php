@@ -1,7 +1,6 @@
 <?php
 
 namespace Controllers;
-require('Configuracion/JWT/config.php');
 
 use JwtAuth;
 use Models\Usuario;
