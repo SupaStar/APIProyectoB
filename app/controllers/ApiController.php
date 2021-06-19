@@ -7,13 +7,8 @@ use Rakit\Validation\Validator;
 
 class ApiController
 {
-
-    public static function nueva()
+    public static function nueva($data)
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        if (!isset($data)) {
-            $data = $_POST;
-        }
         $validator = new Validator;
         $validation = $validator->make($data, [
             'nombre' => 'required',

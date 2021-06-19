@@ -8,12 +8,8 @@ use Rakit\Validation\Validator;
 
 class UsuarioController
 {
-    public static function crearUsuario()
+    public static function crearUsuario($data)
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        if (!isset($data)) {
-            $data = $_POST;
-        }
         $validator = new Validator;
         $validation = $validator->make($data, [
             'apellidos' => 'required',
@@ -57,12 +53,8 @@ class UsuarioController
         echo json_encode(["estado" => true, 'detalle' => $token]);
     }
 
-    public static function login()
+    public static function login($data)
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        if (!isset($data)) {
-            $data = $_POST;
-        }
         $validator = new Validator;
         $validation = $validator->make($data, [
             'mail' => 'required|email',
