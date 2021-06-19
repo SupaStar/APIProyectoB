@@ -1,7 +1,8 @@
 <?php
 
 namespace Controllers;
-require ('JWT/config.php');
+require('JWT/config.php');
+
 use JwtAuth;
 use Models\Usuario;
 use Rakit\Validation\Validator;
@@ -10,7 +11,7 @@ date_default_timezone_set('America/Mexico_City');
 
 class UsuarioController
 {
-    public function crearUsuario()
+    public static function crearUsuario()
     {
         $data = json_decode(file_get_contents('php://input'), true);
         if (!isset($data)) {
@@ -39,7 +40,8 @@ class UsuarioController
         $validation->validate();
         if ($validation->fails()) {
             $errores = $validation->errors();
-            echo json_encode(["estado" => false, "detalle" => $errors = $errores->all()]);return;
+            echo json_encode(["estado" => false, "detalle" => $errors = $errores->all()]);
+            return;
         }
         $usuario = Usuario::where('username', $data['username'])->orWhere('email', $data['mail'])->first();
         if (isset($usuario)) {
@@ -55,9 +57,11 @@ class UsuarioController
         $usuario->save();
         $JWT = new JwtAuth();
         $token = $JWT->Generar($usuario);
-        echo json_encode(["estado"=>true,'detalle'=>$token]);
+        echo json_encode(["estado" => true, 'detalle' => $token]);
     }
-    public function login(){
+
+    public static function login()
+    {
         $data = json_decode(file_get_contents('php://input'), true);
         if (!isset($data)) {
             $data = $_POST;
@@ -75,20 +79,24 @@ class UsuarioController
         $validation->validate();
         if ($validation->fails()) {
             $errores = $validation->errors();
-            echo json_encode(["estado" => false, "detalle" => $errors = $errores->all()]);return;
+            echo json_encode(["estado" => false, "detalle" => $errors = $errores->all()]);
+            return;
         }
         $usuario = Usuario::where('email', $data['mail'])->first();
         if (!isset($usuario)) {
-            echo json_encode(["estado" => false, "detalle" => ["Correo o password incorrectos"]]);return;
+            echo json_encode(["estado" => false, "detalle" => ["Correo o password incorrectos"]]);
+            return;
         }
-        if (password_verify($data['password'], $usuario->password)){
+        if (password_verify($data['password'], $usuario->password)) {
             $JWT = new JwtAuth();
-            $token=$JWT->Generar($usuario);
-            echo json_encode(["estado" => true, "detalle" => $token]);return;
+            $token = $JWT->Generar($usuario);
+            echo json_encode(["estado" => true, "detalle" => $token]);
+            return;
         }
         $JWT = new JwtAuth();
         $token = $JWT->Generar($usuario);
-        echo json_encode(["estado" => false, "detalle" => ["Correo o password incorrectos"]]);return;
+        echo json_encode(["estado" => false, "detalle" => ["Correo o password incorrectos"]]);
+        return;
     }
 }
 
