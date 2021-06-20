@@ -14,6 +14,9 @@ if (!isset($data)) {
 $router = new Router\Router('/api');
 
 $router->post('/nuevoUsuario', function () use ($data) {
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     call_user_func([UsuarioController::class, 'crearUsuario'], $data);
 });
 $router->post('/login', function () use ($data) {
