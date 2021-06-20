@@ -13,7 +13,6 @@ class UsuarioController
         $validation = $validator->make($data, [
             'apellidos' => 'required',
             'nombre' => 'required',
-            'username' => 'required',
             'mail' => 'required|email',
             'password' => 'required|min:8',
             'rpassword' => 'required|same:password',
@@ -21,7 +20,6 @@ class UsuarioController
         $validation->setMessages([
             'apellidos:required' => 'El campo apellidos es requerido',
             'nombre:required' => 'El campo nombre es requerido',
-            'username:required' => 'El campo username es requerido',
             'mail:required' => 'El campo email es requerido',
             'mail:email' => 'El campo email no es un email valido',
             'password:required' => 'El password es requerido',
@@ -35,7 +33,7 @@ class UsuarioController
             echo json_encode(["estado" => false, "detalle" => $errors = $errores->all()]);
             return;
         }
-        $usuario = Usuario::where('username', $data['username'])->orWhere('email', $data['mail'])->first();
+        $usuario = Usuario::where('email', $data['mail'])->first();
         if (isset($usuario)) {
             echo json_encode(["estado" => false, "detalle" => ["Usuario o correo repetido"]]);
             return;
@@ -43,7 +41,6 @@ class UsuarioController
         $usuario = new Usuario();
         $usuario->apellidos = $data['apellidos'];
         $usuario->nombre = $data['nombre'];
-        $usuario->username = $data['username'];
         $usuario->email = $data['mail'];
         $usuario->password = password_hash($data['password'], PASSWORD_DEFAULT);
         $usuario->save();
