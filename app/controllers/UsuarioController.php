@@ -5,9 +5,6 @@ namespace Controllers;
 use JwtAuth;
 use Models\Usuario;
 use Rakit\Validation\Validator;
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 class UsuarioController
 {
     public static function crearUsuario($data)
