@@ -1,7 +1,9 @@
 <?php
 require 'start.php';
 require('Configuracion/JWT/Middleware.php');
-
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 use Controllers\ApiController;
 use Controllers\UsuarioController;
 use Middleware\MiddlewareJwt;
