@@ -1,7 +1,6 @@
 <?php
 
 namespace Middleware;
-require('Configuracion/JWT/config.php');
 
 use JwtAuth;
 
