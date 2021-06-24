@@ -23,16 +23,5 @@ $router->add('/.*', function () {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     echo '<h1>404 - El sitio solicitado no existe</h1>';
 });
-//Ejemolo de uso con middleware
-
-//$router->post('/nuevaApi', function () use ($data) {
-//    $middleware = new MiddlewareJwt();
-//    $response = json_decode($middleware->getBearerToken());
-//    if (!$response->estado) {
-//        echo json_encode($response);
-//        return;
-//    }
-//    call_user_func([UsuarioController::class, 'nueva'], $data);
-//});
 $router->route();
 ?>
