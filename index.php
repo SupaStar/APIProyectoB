@@ -23,6 +23,7 @@ $router->add('/.*', function () {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     echo '<h1>404 - El sitio solicitado no existe</h1>';
 });
+//Ejemolo de uso con middleware
 
 //$router->post('/nuevaApi', function () use ($data) {
 //    $middleware = new MiddlewareJwt();
