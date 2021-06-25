@@ -22,6 +22,25 @@ Se puede ejecutar el servidor de php con el siguiente comando
 php -S localhost:8000
 ```
 
+# Interaccion con la Base de datos
+
+En este proyecto se implemento eloquent, si necesitas informacion acerca de funciones puedes hacerlo
+mediante *[el siguiente link][2]*
+
+# Routeo
+
+Si tu ru ruteo esta de la siguiente forma
+
+```php
+$router = new Router\Router('/api');
+```
+
+Tu ruta de acceso en postman o general, seria de la siguiente forma
+
+```html
+http://localhost:8000/api/tuRuta
+```
+
 # Adicionales
 
 ### Ejemplo de ruta sin data
@@ -50,3 +69,5 @@ call_user_func([Controllador::class, 'accion'], $data);
 ```
 
 [1]: https://getcomposer.org/download/
+
+[2]: https://laravel.com/docs/8.x/eloquent
