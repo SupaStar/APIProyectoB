@@ -19,9 +19,17 @@ Si no se cuenta con composer instalar desde *[aqui][1]*
 Se puede ejecutar el servidor de php con el siguiente comando
 
 ```html
-php -S localhost:8000
+php artisan server
 ```
 
+# Ver comandos disponibles
+
+Para que puedas ver los comandos que tienes disponibles, es colocando en tu terminal
+
+```html
+php artisan 
+```
+Y se te desplegaran todos los comandos disponibles
 # Interaccion con la Base de datos
 
 En este proyecto se implemento eloquent, si necesitas informacion acerca de funciones puedes hacerlo

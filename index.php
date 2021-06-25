@@ -10,7 +10,7 @@ if (!isset($data)) {
     $data = $_POST;
 }
 
-$router = new Router\Router('/usuario');
+$router = new Router\Router('/api');
 
 $router->post('/nuevoUsuario', function () use ($data) {
     call_user_func([UsuarioController::class, 'crearUsuario'], $data);
