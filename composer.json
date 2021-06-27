@@ -1,6 +1,6 @@
 {
-  "name": "alfredoobed/proyectob",
-  "description": "Proyecto para aplicaciones moviles",
+  "name": "alfredoobed/smartphp",
+  "description": "Mini Framework php",
   "type": "project",
   "require": {
     "php": ">=7.2",
